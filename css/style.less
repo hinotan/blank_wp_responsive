@@ -1,0 +1,348 @@
+@import "normalize.less";
+@import "light-bootstrap.less";
+@import "mixin.less";
+
+
+// Typeface
+.serif {font-family: "Georgia", sans-serif;}
+
+
+// Basic
+
+body, #body-wrapper {
+  background: #f4f2de url("@{img}bg.png");
+}
+body {
+  color: @dark;
+  font-family: 'Microsoft YaHei', 'Hiragino Sans GB', sans-serif; // chinese
+}
+
+h1 {font-size: 1.875em;} // 30/16
+h2 {font-size: 1.125em;} // 18/16
+h3 {font-size: 1em;}
+h4 {font-size: 1em;}
+h1, h2, h3, h4 {
+  margin-bottom: 0.6em;
+  color: @green;
+}
+
+a:link, a:visited {
+  color: @red;
+  text-decoration: none;
+  .transition(.3s);
+}
+a:hover {
+  text-decoration: underline;
+}
+
+.a-underline-none {
+  a:hover {text-decoration: none !important;}
+}
+
+a[target]:after {
+  content: url("@{img}target.png");
+}
+a.no-target-icon:after {
+  content: '';
+}
+
+
+// Form basics
+// !important for overidding g-forms
+label {
+  font-weight: normal !important;
+}
+input, textarea {
+  .border-radius(5px);
+  border: 1px solid @grey;
+  padding: 5px 10px !important;
+  .transition;
+  font-size: 1em !important;
+  &:hover, &:focus {
+    border-color: darken(@grey, 10%);
+  }
+}
+button, .button {
+  .border-radius(5px);
+  background: @red;
+  color: #fff;
+  padding: 5px 10px;
+  font-weight: bold;
+  .transition;
+  &:hover {
+    background: darken(@red, 10%);
+    text-decoration: none;
+  }
+}
+
+#m-menu {
+  cursor: pointer;
+}
+
+// Table
+table {
+  border-top: 3px solid @grey;
+  margin: 20px 0;
+  background: @cream;
+}
+tr {
+  border-bottom: 1px solid @grey;
+  &:hover {
+    background: rgba(0,0,0,0.02);
+  }
+}
+td {
+  padding: 5px;
+}
+
+// Page elements
+.wrap {
+  .clear;
+  .clearfix;
+  .center-block;
+}
+
+.sprite {
+  .at2x('../images/sprite.png', 1000px, 600px);
+  background-repeat: no-repeat;
+}
+
+#scroll-to-top { //image
+  .size(40px, 36px);
+  position: fixed;
+  right: 15px;
+  bottom: 20px;
+  z-index: 9999;
+  .border-radius;
+  .box-shadow;
+  .opacity(70);
+  background-color: #000;
+  background-repeat: no-repeat;
+  .at2x('../images/scroll-to-top.png', 40px, 36px);
+  cursor: pointer;
+}
+
+
+
+////////////////// HEADER //////////////////
+
+
+
+////////////////// HERO //////////////////
+
+
+
+
+/*
+  ####################################################
+  --------------------------------------------------
+  ################################################
+  ##############################################
+  ################################################
+  --------------------------------------------------
+  ####################################################
+*/
+
+
+
+
+/* ------------------------
+   MEDIA QUERIES
+------------------------ */
+
+// S: Landscape phone to desktop/tablet
+/*
+   #########
+  # |     | #              ##########
+  # | . . | #           ######     ####
+  # |     | #            #######
+  # |  v  | #                  #######
+  # |_____| #           ####     ######
+  #   ( )   #            ###########
+   #########
+*/
+
+@media (max-width: 767px) {
+  .desktop {display: none}
+  .wrap {width: 90%;}
+  @import "responsive-mobile.less";
+
+}
+
+
+// --------------------------------------------------
+
+// M: Tablet to desktop
+/*
+   ###################
+  #  --------------   #           ###         ###
+  # |              |  #           ######    #####
+  # |   -     \    |-.#           ####### #######
+  # |   -     /    |-`#           ###  #####  ###
+  # |              |  #           ###   ###   ###
+  #  --------------   #           ###         ###
+   ###################
+*/
+
+@media (min-width: 768px) and (max-width: 979px) {
+  @col: 42px;
+  @gap: 20px;
+  body {
+    font-size: 87.5%;
+  }
+  article p {
+    font-size: 1.14em;
+  }
+  .wrap {
+    width: (@col * 12) + (@gap * 11); //724px
+  }
+  .left-col {
+    width: (@col * 8) + (@gap * 7);
+    .floatL;
+  }
+  .right-col {
+    width: @col * 3 + @gap * 2; // 166
+    width: 186px;
+    .floatR;
+  }
+  header .video {
+    width: @col * 5 + @gap * 4;
+    .text {
+      left: @col * 6 + @gap * 6;
+      width: @col * 6 + @gap * 5;
+      p {
+        //width: @col * 5 + @gap * 4;
+      }
+    }
+    &:hover {
+      width: (@col * 12) + (@gap * 11);
+    }
+  }
+  @import "responsive-tablet.less";
+}
+
+
+// --------------------------------------------------
+
+// L: Large desktop and up
+/*
+   ######################
+  ##                    ##
+  ##     O   |   O      ##           ####
+  ##        _|          ##           ####
+  ##      -_____-       ##           ####
+  ##                    ##           ####
+  ##---------==---------##           ####
+   ######################            ##############
+           /::::\                    ##############
+         ==========
+*/
+
+@media (min-width: 980px) {
+  @col: 60px;
+  @gap: 20px;
+  .wrap {
+    width: (@col * 12) + (@gap * 11); //940px; //12col
+  }
+  .left-col {
+    width: @col * 8 + @gap * 7;
+    .floatL;
+  }
+  .right-col {
+    width: @col * 3 + @gap * 2;
+    .floatR;
+  }
+  header .video {
+    width: @col * 4 + @gap * 3;
+    .text {
+      left: @col * 6 + @gap * 6;
+      width: @col * 6 + @gap * 5;
+      p {
+        width: @col * 5 + @gap * 4;
+      }
+    }
+    &:hover {
+      width: (@col * 12) + (@gap * 11);
+    }
+  }
+  @import "responsive-desktop.less";
+
+}
+
+
+// --------------------------------------------------
+
+// M+L: Tablet + desktop
+/*
+  ###         ###          ####
+  ######    #####          ####
+  ####### #######    ##    ####
+  ###  #####  ###  ######  ####
+  ###   ###   ###    ##    ##############
+  ###         ###          ##############
+*/
+
+@media (min-width: 768px) {
+  .mobile {display: none}
+  @import "responsive-tablet-and-desktop.less";
+}
+
+
+
+// General @2x
+@media all and (-webkit-min-device-pixel-ratio: 1.5) {
+
+}
+
+
+
+/*
+  ####################################################
+  --------------------------------------------------
+  ################################################
+  ##############################################
+  ################################################
+  --------------------------------------------------
+  ####################################################
+*/
+
+/* ------------------------
+   PLUGINS
+------------------------ */
+
+//@import "../vendor/css/flexslider.css";
+
+
+
+/* ------------------------
+   IE fixes
+------------------------ */
+
+/*
+        #########.:''.
+    ##########.::####
+  ########  .::########
+ #######  .::'  ########
+ #######:::#############
+ #####:::###############  I'M UR OLD BUDDY
+ ####:::
+  #:::###      #######
+ .:::###############
+ '::.   #########
+
+*/
+
+.ie6, .ie7 {
+
+  // [1] Add tablet layout for non-responsive oldies..
+  .mobile {display: none !important;}
+
+
+
+  @import "responsive-tablet.less";
+  @import "responsive-tablet-and-desktop.less";
+
+  // [2] Remember to add fallback solid colours
+
+}
+

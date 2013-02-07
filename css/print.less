@@ -1,0 +1,61 @@
+// Hide stuff
+nav, .mobile, aside, .logo-s, #scroll-to-top {
+  display: none !important;
+}
+
+// Enlarge content area
+.wrap, .main-block, article, .content {
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0;
+  float: none !important;
+}
+#main .main-block, #hero .main-block {
+  background: transparent;
+  .box-shadow(none);
+  .border-radius(none);
+}
+
+// Reset styles and text colours
+body, #body-wrapper {
+  color: black;
+  background: white;
+}
+h1, h2, h3, h4 {
+  color: black !important;
+  font-weight: bold;
+  letter-spacing: 0 !important;
+  text-align: left !important;
+}
+
+
+// Add counter to headers
+// http://www.w3.org/TR/CSS2/generate.html#counters
+body {
+  counter-reset: section;
+}
+h1 {
+  //counter-reset: section;
+}
+h2:before {
+  counter-increment: section;
+  content: counter(section) ". ";
+}
+h2 {
+  counter-reset: subsection;
+}
+h3:before {
+  counter-increment: subsection;
+  content: counter(section) "." counter(subsection) ". ";
+}
+
+// Tweak links and show url
+.main-block {
+  a:link {
+    color: @blue;
+    text-decoration: underline;
+    &:after {
+      content: " (" attr(href) ") ";
+    }
+  }
+}

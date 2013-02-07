@@ -1,0 +1,147 @@
+@import "light-bootstrap.less";
+@import "mixin.less";
+
+/*
+        #########.:''.
+    ##########.::####
+  ########  .::########
+ #######  .::'  ########
+ #######:::#############
+ #####:::###############  I'M UR OLD BUDDY
+ ####:::
+  #:::###      #######
+ .:::###############
+ '::.   #########
+
+*/
+
+//.ie {
+
+  // [1] Add tablet layout for non-responsive oldies..
+
+  .mobile {display: none !important;}
+
+  @col: 42px;
+  @gap: 20px;
+
+  .wrap {
+    width: (@col * 12) + (@gap * 11); //
+  }
+  .main-block {
+    width: (@col * 13) + (@gap * 12); //
+    margin-left: -(@col / 2 + 10);
+    margin-right: -(@col / 2 + 10);
+  }
+  .left-col {
+    width: (@col * 8) + (@gap * 7);
+    .floatL;
+  }
+  .right-col {
+    width: @col * 3 + @gap * 2;
+    width: 186px;
+    .floatR;
+  }
+
+  #hero {
+    article {
+      margin-left: (@col / 2) + 10px;
+      margin-right: @col + 10px;
+    }
+  }
+  .four-col {
+    width: (@col * 4) + (@gap * 3);
+    margin: 0 10px;
+  }
+
+  #main article {
+    width: (@col * 6) + (@gap * 5);
+  }
+  #main aside {
+    width: (@col * 3) + (@gap * 2);
+  }
+
+  .flex-control-nav {
+    width: 50%;
+    margin-left: 50%;
+    bottom: 8px;
+  }
+
+  @import "responsive-tablet.less";
+  @import "responsive-tablet-and-desktop.less";
+
+  // [2] Add fallback to fancy css - box-shadow, opacity
+
+  nav.main .sub-menu, .main-block {
+    border: 1px solid #D7D5C3;
+  }
+
+  // [3] More stuff to fix
+
+  body {
+    //font-family: 'Helvetica Neue', Arial, 'Microsoft YaHei', 'Hiragino Sans GB', sans-serif;
+  }
+  body, #blurbs .blurb {
+    //font-size: 14px;
+  }
+
+  #hero .intro p, .content, #blurbs .blurb {
+    font-size: 12px !important;
+  }
+  h1 {
+    font-size: 18px !important;
+  }
+//}
+
+
+.ie7 {
+  // Fix inline-block...
+  nav.main>ul>li {
+    display: block !important;
+    float: left;
+    //width: 90px;
+  }
+  nav.main>ul>li.mobile {
+    display: none !important;
+  }
+
+
+  // Fix z-index context, remember to have absolute positioning if nothing else works...
+  header {
+    z-index: 500 !important;
+    position: relative;
+  }
+  #logo {
+    top: 20px;
+  }
+  nav.main {
+    position: absolute;
+    right: 0;
+  }
+
+  // Fix margin collapse...
+  #main article {
+    padding-bottom: 60px;
+  }
+
+  // Remove gaps...
+  #hero .main-block {
+    height: 308px;
+  }
+
+  // Fix table tr styling...
+  td {
+    border-bottom: 1px solid #c0beae;
+  }
+
+  .flex-control-nav {
+    bottom: 12px;
+  }
+
+}
+
+.ie8 {
+  // Fix max-width img issue - add width: auto
+  .content img {
+    width: auto;
+  }
+}
