@@ -1,7 +1,7 @@
-@import "normalize.less";
-@import "light-bootstrap.less";
-@import "mixin.less";
-@import "typography.less";
+@import "_normalize.less";
+@import "_light-bootstrap.less";
+@import "_mixin.less";
+@import "_typography.less";
 
 @import "../vendor/css/onMediaQuery.css";
 
@@ -295,7 +295,7 @@ td {
 @media (max-width: 767px) {
   .desktop {display: none}
   .wrap {width: 90%;}
-  @import "r-mobile.less";
+  @import "_r-mobile.less";
 
 }
 
@@ -331,7 +331,7 @@ td {
   .g-8col { width: (@col + @gap) * 8 - @gap }
   .g-9col { width: (@col + @gap) * 9 - @gap }
 
-  @import "r-tablet.less";
+  @import "_r-tablet.less";
 
   html {font-family: "tablet";}
   body:after {content: "tablet";}
@@ -369,7 +369,7 @@ td {
   .g-8col { width: (@col + @gap) * 8 - @gap }
   .g-9col { width: (@col + @gap) * 9 - @gap }
 
-  @import "r-desktop.less";
+  @import "_r-desktop.less";
 
   html {font-family: "desktop";}
   body:after {content: "desktop";}
@@ -398,7 +398,7 @@ td {
     margin-right: 0;
   }
 
-  @import "r-tablet-and-desktop.less";
+  @import "_r-tablet-and-desktop.less";
 }
 
 
