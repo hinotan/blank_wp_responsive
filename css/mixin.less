@@ -1,14 +1,21 @@
 @img: "../images/";
 
-// Colours
-@green: #00512e;
-@red: #973130;
+// Colours -----------------
 
-@dark: #333;
-@grey: #c0beae; //yellow-ish grey
-@cream: #fbfaf2;
+@ink: #444; // body text
+@paper: #fff; // body bg
 
-@darkGrey: #555;
+// Accents
+@orange: #f5822b;
+@red: #bb2830;
+@yellow: #f0b040;
+
+// Greys, light to dark
+@grey1: #f9fafa;
+@grey2: #eceded; // standard grey
+@grey3: #dfe2e2;
+@grey4: #d0d5d5;
+
 
 // Rules
 .text-shadow-dark {text-shadow: 0 1px rgba(0,0,0,.75);}
@@ -17,8 +24,8 @@
 .floatR {float: right;}
 .clear {clear: both;}
 .hide {display: none;}
-.hide-text {
-  text-indent: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-}
+.hide-text {text-indent: 100%; white-space: nowrap; overflow: hidden;}
+
+
+a[target]:after {content: url("@{img}target.png");}
+a.no-target-icon:after {content: '';}

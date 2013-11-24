@@ -1,5 +1,9 @@
 /**
   based on http://www.markdotto.com/bootstrap/
+  v 0.1.1
+
+  Last updated: 25 Sep 2013
+
   */
 
 /* Mixins
@@ -157,7 +161,7 @@
 
 // Opacity
 .opacity(@op: 100) {
-  filter: e(%("alpha(opacity=%d)", @op));
+  //filter: e(%("alpha(opacity=%d)", @op));
   -khtml-opacity: @op / 100;
   -moz-opacity: @op / 100;
   opacity: @op / 100;
@@ -170,6 +174,18 @@
   -ms-transform: @property;
   -o-transform: @property;
   transform: @property;
+}
+
+// Perspective
+.perspective(@number: 500) {
+  -webkit-perspective: @number;
+  perspective: @number;
+}
+
+// HEX colour to RGBA
+.bg-opacity(@color, @op: 100) {
+  background-color: @color; // fallback
+  background-color: hsla(hue(@color), saturation(@color), lightness(@color), @op / 100);
 }
 
 // Keyframe animations: Based on http://mateuszkocz.github.com/3l/
@@ -199,12 +215,3 @@
     background-size: @w @h;
   }
 }
-// .at2x(@path, @w: auto, @h: auto) {
-//   background-image: url(@path);
-//   @at2x_path: ~`"@{path}".split('.').slice(0, "@{path}".split('.').length - 1).join(".") + "@2x" + "." + "@{path}".split('.')["@{path}".split('.').length - 1]`;
-
-//   @media all and (-webkit-min-device-pixel-ratio : 1.5) {
-//     background-image: url(@at2x_path);
-//     background-size: @w @h;
-//   }
-// }

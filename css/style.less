@@ -1,92 +1,213 @@
 @import "normalize.less";
 @import "light-bootstrap.less";
 @import "mixin.less";
+@import "typography.less";
+
+@import "../vendor/css/onMediaQuery.css";
+
+/*
+///////////////////////////////////////
+
+CONTENTS
+
+  0.0 Basic (For typographic styles see typography.less)
+  0.1 Forms
+  0.2 Tables
+  0.3 Other Elements
+  0.4 Wordpress Layout
+
+  ------
+
+  (Selectors listed below are only major ones, not all.)
+
+  1.0 HEADER
+  1.1 HOMEPAGE
+  1.2 MAIN
+
+  ... (Add more page styles if needed)
+
+  9.0 FOOTER
+
+  10.0 MOBILE MENU
+
+  ------
+
+  MEDIA QUERIES (Grids, font sizes, and odds.)
+
+  S:   Landscape phone to desktop/tablet
+  M:   Tablet to desktop
+  L:   Large desktop and up
+  M+L: Tablet + desktop
+
+  ------
+
+  PLUGINS
+
+  (Nothing yet.)
+
+///////////////////////////////////////
+*/
 
 
-// Typeface
-.serif {font-family: "Georgia", sans-serif;}
 
+//////////////// Basic ////////////////
 
-// Basic
-
-body, #body-wrapper {
-  background: #f4f2de url("@{img}bg.png");
+.wrap {
+  .clear;
+  .clearfix;
+  .center-block;
 }
-body {
-  color: @dark;
-  font-family: 'Microsoft YaHei', 'Hiragino Sans GB', sans-serif; // chinese
-}
 
-h1 {font-size: 1.875em;} // 30/16
-h2 {font-size: 1.125em;} // 18/16
-h3 {font-size: 1em;}
-h4 {font-size: 1em;}
-h1, h2, h3, h4 {
-  margin-bottom: 0.6em;
-  color: @green;
+a {
+  .transition(color .3s ease);
 }
-
-a:link, a:visited {
-  color: @red;
-  text-decoration: none;
-  .transition(.3s);
-}
-a:hover {
-  text-decoration: underline;
-}
-
-.a-underline-none {
-  a:hover {text-decoration: none !important;}
-}
-
-a[target]:after {
-  content: url("@{img}target.png");
-}
-a.no-target-icon:after {
-  content: '';
-}
-
-
-// Form basics
-// !important for overidding g-forms
-label {
-  font-weight: normal !important;
-}
-input, textarea {
-  .border-radius(5px);
-  border: 1px solid @grey;
-  padding: 5px 10px !important;
-  .transition;
-  font-size: 1em !important;
-  &:hover, &:focus {
-    border-color: darken(@grey, 10%);
+.icon { // SVG icons
+  path {
+    .transition(fill .3s ease);
   }
+}
+
+hr {
+  border: none;
+  width: 80%;
+  margin: 3em 0;
+  border-bottom: 1px solid @grey4;
+  text-align: left;
+}
+section {
+  .clearfix;
+  margin-bottom: 2em;
+}
+figure {
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  iframe {
+    max-width: 100%;
+  }
+}
+
+
+//////////////// 0.1 Forms ////////////////
+
+input, textarea {
+  color: @ink;
+  .sans-serif;
+  .border-radius(0);
+  border: 2px solid @grey4;
+  .border-radius(5px);
+  .transition;
+  &:hover, &:focus {
+    border-color: @orange;
+  }
+}
+input[type=file] {
+  font-size: 12px;
+}
+
+button {
+  .sans-serif;
 }
 button, .button {
+  .make-button;
+  display: block;
+  width: 200px;
+  border: none;
   .border-radius(5px);
-  background: @red;
-  color: #fff;
   padding: 5px 10px;
   font-weight: bold;
-  .transition;
+  text-transform: uppercase;
+  text-align: center;
+  .transition(background .3s ease);
   &:hover {
-    background: darken(@red, 10%);
     text-decoration: none;
+  }
+
+  &.red {
+    .make-button(@orange);
+  }
+  &.yellow {
+    .make-button(@orange);
   }
 }
 
-#m-menu {
-  cursor: pointer;
+// GRAVITY FORMS
+
+.gfield_required,
+.gform_wrapper li.gfield_error div.ginput_complex.ginput_container label, .gform_wrapper li.gfield_error ul.gfield_checkbox, .gform_wrapper li.gfield_error ul.gfield_radio {
+  color: @orange !important;
+}
+.gform_wrapper label {
+  font-weight: normal !important;
+}
+.gform_wrapper {
+  input, textarea {
+    padding: 5px 10px !important;
+    font-size: 1em !important;
+  }
+}
+.gform_wrapper div.validation_error {
+  font-size: 1em !important;
 }
 
-// Table
+.gform_wrapper li.gfield.gfield_error {
+  border: none !important;
+  background: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.gform_wrapper.gform_validation_error li.gfield.gfield_error.gfield_contains_required {
+  padding-left: 0!important;
+}
+.gform_wrapper li.gfield_error input, .gform_wrapper li.gfield_error textarea {
+  border-width: 2px !important;
+  border-color: @orange !important;
+}
+
+.ginput_container {
+  margin: 0 !important;
+}
+.gfield_description {
+  margin-top: 0 !important;
+  padding: 6px 0 !important;
+}
+.gform_wrapper .validation_message,
+.validation_error {
+  color: @orange !important;
+  font-weight: normal !important;
+}
+.gform_wrapper .gfield_label {
+  color: @ink !important;
+}
+.gform_wrapper .top_label .gfield_error {
+  width: 100% !important;
+}
+.gform_wrapper .top_label .gfield_error .ginput_container {
+  max-width: 100% !important;
+}
+
+.gform_wrapper .gsection {
+  margin-top: 3em !important;
+}
+.gform_wrapper input.button {
+  padding: 1em 1.5em !important;
+}
+
+#gform_wrapper_3 input[type="submit"] {
+  width: 270px;
+}
+
+
+//////////////// 0.2 Tables ////////////////
+
 table {
-  border-top: 3px solid @grey;
+  border-top: 3px solid @grey2;
   margin: 20px 0;
-  background: @cream;
+  background: @grey1;
 }
 tr {
-  border-bottom: 1px solid @grey;
+  border-bottom: 1px solid @grey2;
   &:hover {
     background: rgba(0,0,0,0.02);
   }
@@ -95,12 +216,8 @@ td {
   padding: 5px;
 }
 
-// Page elements
-.wrap {
-  .clear;
-  .clearfix;
-  .center-block;
-}
+
+//////////////// 0.3 Other Elements ////////////////
 
 .sprite {
   .at2x('../images/sprite.png', 1000px, 600px);
@@ -123,13 +240,14 @@ td {
 }
 
 
+////////////////// 0.4 Wordpress Layout //////////////////
 
-////////////////// HEADER //////////////////
-
-
-
-////////////////// HERO //////////////////
-
+.alignright {
+  .floatR;
+}
+.alignleft {
+  .floatL;
+}
 
 
 
@@ -142,6 +260,18 @@ td {
   --------------------------------------------------
   ####################################################
 */
+
+
+////////////////// 1.0 HEADER //////////////////
+
+#logo {
+  display: block;
+  background: url("@{img}logo.svg");
+}
+
+
+
+
 
 
 
@@ -165,7 +295,7 @@ td {
 @media (max-width: 767px) {
   .desktop {display: none}
   .wrap {width: 90%;}
-  @import "responsive-mobile.less";
+  @import "r-mobile.less";
 
 }
 
@@ -185,40 +315,27 @@ td {
 */
 
 @media (min-width: 768px) and (max-width: 979px) {
-  @col: 42px;
+  @col: 44px;
   @gap: 20px;
   body {
     font-size: 87.5%;
   }
-  article p {
-    font-size: 1.14em;
-  }
   .wrap {
-    width: (@col * 12) + (@gap * 11); //724px
+    width: (@col + @gap) * 12 - @gap; //748px
   }
-  .left-col {
-    width: (@col * 8) + (@gap * 7);
-    .floatL;
-  }
-  .right-col {
-    width: @col * 3 + @gap * 2; // 166
-    width: 186px;
-    .floatR;
-  }
-  header .video {
-    width: @col * 5 + @gap * 4;
-    .text {
-      left: @col * 6 + @gap * 6;
-      width: @col * 6 + @gap * 5;
-      p {
-        //width: @col * 5 + @gap * 4;
-      }
-    }
-    &:hover {
-      width: (@col * 12) + (@gap * 11);
-    }
-  }
-  @import "responsive-tablet.less";
+  .g-3col { width: (@col + @gap) * 3 - @gap }
+  .g-4col { width: (@col + @gap) * 4 - @gap }
+  .g-5col { width: (@col + @gap) * 5 - @gap }
+  .g-6col { width: (@col + @gap) * 6 - @gap }
+  .g-7col { width: (@col + @gap) * 7 - @gap }
+  .g-8col { width: (@col + @gap) * 8 - @gap }
+  .g-9col { width: (@col + @gap) * 9 - @gap }
+
+  @import "r-tablet.less";
+
+  html {font-family: "tablet";}
+  body:after {content: "tablet";}
+
 }
 
 
@@ -242,31 +359,20 @@ td {
   @col: 60px;
   @gap: 20px;
   .wrap {
-    width: (@col * 12) + (@gap * 11); //940px; //12col
+    width: (@col + @gap) * 12 - @gap; //940px
   }
-  .left-col {
-    width: @col * 8 + @gap * 7;
-    .floatL;
-  }
-  .right-col {
-    width: @col * 3 + @gap * 2;
-    .floatR;
-  }
-  header .video {
-    width: @col * 4 + @gap * 3;
-    .text {
-      left: @col * 6 + @gap * 6;
-      width: @col * 6 + @gap * 5;
-      p {
-        width: @col * 5 + @gap * 4;
-      }
-    }
-    &:hover {
-      width: (@col * 12) + (@gap * 11);
-    }
-  }
-  @import "responsive-desktop.less";
+  .g-3col { width: (@col + @gap) * 3 - @gap }
+  .g-4col { width: (@col + @gap) * 4 - @gap }
+  .g-5col { width: (@col + @gap) * 5 - @gap }
+  .g-6col { width: (@col + @gap) * 6 - @gap }
+  .g-7col { width: (@col + @gap) * 7 - @gap }
+  .g-8col { width: (@col + @gap) * 8 - @gap }
+  .g-9col { width: (@col + @gap) * 9 - @gap }
 
+  @import "r-desktop.less";
+
+  html {font-family: "desktop";}
+  body:after {content: "desktop";}
 }
 
 
@@ -284,7 +390,15 @@ td {
 
 @media (min-width: 768px) {
   .mobile {display: none}
-  @import "responsive-tablet-and-desktop.less";
+  .grids {
+    margin-right: 20px;
+    .floatL;
+  }
+  .grids.omega { // last one in a row
+    margin-right: 0;
+  }
+
+  @import "r-tablet-and-desktop.less";
 }
 
 
@@ -311,38 +425,4 @@ td {
 ------------------------ */
 
 //@import "../vendor/css/flexslider.css";
-
-
-
-/* ------------------------
-   IE fixes
------------------------- */
-
-/*
-        #########.:''.
-    ##########.::####
-  ########  .::########
- #######  .::'  ########
- #######:::#############
- #####:::###############  I'M UR OLD BUDDY
- ####:::
-  #:::###      #######
- .:::###############
- '::.   #########
-
-*/
-
-.ie6, .ie7 {
-
-  // [1] Add tablet layout for non-responsive oldies..
-  .mobile {display: none !important;}
-
-
-
-  @import "responsive-tablet.less";
-  @import "responsive-tablet-and-desktop.less";
-
-  // [2] Remember to add fallback solid colours
-
-}
 

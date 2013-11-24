@@ -15,7 +15,6 @@
       else { bloginfo('name'); echo ' - '; wp_title('',true); }
     ?>
   </title>
-  <meta name="description" content="" />
   <meta name="author" content="" />
   <meta name="designer" content="UPRISE - uprise.co.nz" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">

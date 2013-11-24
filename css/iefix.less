@@ -1,3 +1,4 @@
+@import "normalize.less";
 @import "light-bootstrap.less";
 @import "mixin.less";
 
@@ -15,120 +16,88 @@
 
 */
 
-//.ie {
 
-  // [1] Add tablet layout for non-responsive oldies..
+// [1] Add desktop layout for non-responsive oldies..
+// --------------------------------------------------
 
-  .mobile {display: none !important;}
+.mobile {display: none !important;}
 
-  @col: 42px;
-  @gap: 20px;
+@col: 60px;
+@gap: 20px;
+.wrap {
+  width: (@col + @gap) * 12 - @gap; //748px
+}
+.g-3col { width: (@col + @gap) * 3 - @gap }
+.g-4col { width: (@col + @gap) * 4 - @gap }
+.g-5col { width: (@col + @gap) * 5 - @gap }
+.g-6col { width: (@col + @gap) * 6 - @gap }
+.g-7col { width: (@col + @gap) * 7 - @gap }
+.g-8col { width: (@col + @gap) * 8 - @gap }
+.g-9col { width: (@col + @gap) * 9 - @gap }
 
-  .wrap {
-    width: (@col * 12) + (@gap * 11); //
-  }
-  .main-block {
-    width: (@col * 13) + (@gap * 12); //
-    margin-left: -(@col / 2 + 10);
-    margin-right: -(@col / 2 + 10);
-  }
-  .left-col {
-    width: (@col * 8) + (@gap * 7);
-    .floatL;
-  }
-  .right-col {
-    width: @col * 3 + @gap * 2;
-    width: 186px;
-    .floatR;
-  }
+@import "r-desktop.less";
+@import "r-tablet-and-desktop.less";
 
-  #hero {
-    article {
-      margin-left: (@col / 2) + 10px;
-      margin-right: @col + 10px;
-    }
-  }
-  .four-col {
-    width: (@col * 4) + (@gap * 3);
-    margin: 0 10px;
-  }
 
-  #main article {
-    width: (@col * 6) + (@gap * 5);
-  }
-  #main aside {
-    width: (@col * 3) + (@gap * 2);
-  }
 
-  .flex-control-nav {
-    width: 50%;
-    margin-left: 50%;
-    bottom: 8px;
-  }
+// [2] Add fallback to fancy css - box-shadow, opacity, pseudo classes, border-radius
+// --------------------------------------------------
 
-  @import "responsive-tablet.less";
-  @import "responsive-tablet-and-desktop.less";
 
-  // [2] Add fallback to fancy css - box-shadow, opacity
 
-  nav.main .sub-menu, .main-block {
-    border: 1px solid #D7D5C3;
-  }
 
-  // [3] More stuff to fix
+// [3] Add fallback to svg
+// --------------------------------------------------
 
-  body {
-    //font-family: 'Helvetica Neue', Arial, 'Microsoft YaHei', 'Hiragino Sans GB', sans-serif;
-  }
-  body, #blurbs .blurb {
-    //font-size: 14px;
-  }
+svg {
+  display: none !important;
+}
 
-  #hero .intro p, .content, #blurbs .blurb {
-    font-size: 12px !important;
-  }
-  h1 {
-    font-size: 18px !important;
-  }
-//}
+
+
+
+// [4] More stuff to fix
+// --------------------------------------------------
+
+
+
+
+
+// --------------------------------------------------
+
+// Browser specific fixes
+
+// --------------------------------------------------
 
 
 .ie7 {
-  // Fix inline-block...
-  nav.main>ul>li {
-    display: block !important;
-    float: left;
-    //width: 90px;
-  }
-  nav.main>ul>li.mobile {
-    display: none !important;
-  }
 
-
-  // Fix z-index context, remember to have absolute positioning if nothing else works...
-  header {
-    z-index: 500 !important;
+  // [1] Fix z-index context
+  // Add position:relative to nav's ancestor container to allow dropdown menu on top of other stuff.
+  header, #main-nav {
     position: relative;
-  }
-  #logo {
-    top: 20px;
-  }
-  nav.main {
-    position: absolute;
-    right: 0;
+    z-index: 99999;
   }
 
-  // Fix margin collapse...
-  #main article {
-    padding-bottom: 60px;
-  }
+  // [2] Fix sizing. Fallback to box-sizing: border-box
 
-  // Remove gaps...
-  #hero .main-block {
-    height: 308px;
-  }
 
-  // Fix table tr styling...
+  // [3] Fallback to :before / :after
+
+
+  // [4] Fallback to inherit styles
+
+
+  // [5] Fix inline-block...
+
+
+  // [6] Fix margin collapse...
+
+
+  // [7] Remove gaps...
+
+
+  // [8] Fix table tr styling...
   td {
     border-bottom: 1px solid #c0beae;
   }
@@ -137,11 +106,24 @@
     bottom: 12px;
   }
 
+  // More stuff to fix...
+
+
 }
 
+// --------------------------------------------------
+
+
 .ie8 {
-  // Fix max-width img issue - add width: auto
+
+  // [1] Fix max-width img issue - add width: auto
   .content img {
     width: auto;
   }
+
+  // [2] Negative margin fixes
+
+  // More stuff to fix...
+
+
 }
