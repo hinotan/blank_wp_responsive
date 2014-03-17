@@ -244,10 +244,13 @@ td {
 
 .alignright {
   .floatR;
+  margin: 5px 0 14px 14px;
 }
 .alignleft {
   .floatL;
+  margin: 5px 14px 14px 0;
 }
+
 
 
 
@@ -323,6 +326,7 @@ td {
   .wrap {
     width: (@col + @gap) * 12 - @gap; //748px
   }
+  .g-2col { width: (@col + @gap) * 2 - @gap }
   .g-3col { width: (@col + @gap) * 3 - @gap }
   .g-4col { width: (@col + @gap) * 4 - @gap }
   .g-5col { width: (@col + @gap) * 5 - @gap }
@@ -330,6 +334,7 @@ td {
   .g-7col { width: (@col + @gap) * 7 - @gap }
   .g-8col { width: (@col + @gap) * 8 - @gap }
   .g-9col { width: (@col + @gap) * 9 - @gap }
+  .g-10col { width: (@col + @gap) * 10 - @gap }
 
   @import "_r-tablet.less";
 
@@ -361,6 +366,7 @@ td {
   .wrap {
     width: (@col + @gap) * 12 - @gap; //940px
   }
+  .g-2col { width: (@col + @gap) * 2 - @gap }
   .g-3col { width: (@col + @gap) * 3 - @gap }
   .g-4col { width: (@col + @gap) * 4 - @gap }
   .g-5col { width: (@col + @gap) * 5 - @gap }
@@ -368,6 +374,7 @@ td {
   .g-7col { width: (@col + @gap) * 7 - @gap }
   .g-8col { width: (@col + @gap) * 8 - @gap }
   .g-9col { width: (@col + @gap) * 9 - @gap }
+  .g-10col { width: (@col + @gap) * 10 - @gap }
 
   @import "_r-desktop.less";
 
@@ -390,12 +397,13 @@ td {
 
 @media (min-width: 768px) {
   .mobile {display: none}
-  .grids {
+  .g-2col,.g-3col,.g-4col,.g-5col,.g-6col,.g-7col,.g-8col,.g-9col, .g-10col {
     margin-right: 20px;
     .floatL;
-  }
-  .grids.omega { // last one in a row
-    margin-right: 0;
+
+    &.omega { // last one in a row
+      margin-right: 0;
+    }
   }
 
   @import "_r-tablet-and-desktop.less";

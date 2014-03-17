@@ -27,5 +27,32 @@
 .hide-text {text-indent: 100%; white-space: nowrap; overflow: hidden;}
 
 
-a[target]:after {content: url("@{img}target.png");}
-a.no-target-icon:after {content: '';}
+a[target]:after {content: url("@{img}target.gif");}
+
+.no-target-icon {
+  &:after, a:after {
+    content: '';
+  }
+}
+
+.no-list-style {
+  &, ul, ol {
+    list-style: none;
+    padding: 0;
+  }
+}
+
+.make-button(@color:@orange) {
+  cursor: pointer;
+  background: @color;
+  color: #fff !important;
+  path {
+    fill: #fff;
+  }
+  &:hover {
+    background: darken(@color, 10%);
+  }
+  &:active {
+    background: darken(@color, 20%);
+  }
+}
