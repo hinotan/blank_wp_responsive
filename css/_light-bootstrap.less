@@ -1,8 +1,8 @@
 /**
   based on http://www.markdotto.com/bootstrap/
-  v 0.1.1
+  v 0.1.2
 
-  Last updated: 25 Sep 2013
+  Last updated: 2 Apr 2014
 
   */
 
@@ -175,6 +175,13 @@
   -o-transform: @property;
   transform: @property;
 }
+.transform-origin(@property: 50% 50%) {
+  -webkit-transform-origin: @property;
+  -moz-transform-origin: @property;
+  -ms-transform-origin: @property;
+  -o-transform-origin: @property;
+  transform-origin: @property;
+}
 
 // Perspective
 .perspective(@number: 500) {
@@ -214,4 +221,16 @@
     background-image: url("@{at2x_path}");
     background-size: @w @h;
   }
+}
+
+
+// http://stackoverflow.com/questions/3680429/click-through-a-div-to-underlying-elements
+
+.click-through-div(@path) {
+  pointer-events:none;
+  background:url(@path);
+}
+.click-through-div-ie(@path) {
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='@path', sizingMethod='scale');
+  background:none !important;
 }
