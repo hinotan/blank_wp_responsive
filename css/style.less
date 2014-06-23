@@ -71,7 +71,7 @@ hr {
   border: none;
   width: 80%;
   margin: 3em 0;
-  border-bottom: 1px solid @grey4;
+  border-bottom: 1px solid @grey;
   text-align: left;
 }
 section {
@@ -95,11 +95,11 @@ input, textarea {
   color: @ink;
   .sans-serif;
   .border-radius(0);
-  border: 2px solid @grey4;
+  border: 2px solid @grey;
   .border-radius(5px);
   .transition;
   &:hover, &:focus {
-    border-color: @orange;
+    border-color: @link;
   }
 }
 input[type=file] {
@@ -123,20 +123,13 @@ button, .button {
   &:hover {
     text-decoration: none;
   }
-
-  &.red {
-    .make-button(@orange);
-  }
-  &.yellow {
-    .make-button(@orange);
-  }
 }
 
 // GRAVITY FORMS
 
 .gfield_required,
 .gform_wrapper li.gfield_error div.ginput_complex.ginput_container label, .gform_wrapper li.gfield_error ul.gfield_checkbox, .gform_wrapper li.gfield_error ul.gfield_radio {
-  color: @orange !important;
+  //color: @link !important;
 }
 .gform_wrapper label {
   font-weight: normal !important;
@@ -162,7 +155,7 @@ button, .button {
 }
 .gform_wrapper li.gfield_error input, .gform_wrapper li.gfield_error textarea {
   border-width: 2px !important;
-  border-color: @orange !important;
+  //border-color: @link !important;
 }
 
 .ginput_container {
@@ -174,7 +167,7 @@ button, .button {
 }
 .gform_wrapper .validation_message,
 .validation_error {
-  color: @orange !important;
+  //color: @link !important;
   font-weight: normal !important;
 }
 .gform_wrapper .gfield_label {
@@ -202,12 +195,12 @@ button, .button {
 //////////////// 0.2 Tables ////////////////
 
 table {
-  border-top: 3px solid @grey2;
+  border-top: 3px solid @grey;
   margin: 20px 0;
-  background: @grey1;
+  background: @lightGrey;
 }
 tr {
-  border-bottom: 1px solid @grey2;
+  border-bottom: 1px solid @grey;
   &:hover {
     background: rgba(0,0,0,0.02);
   }
@@ -298,6 +291,7 @@ td {
 @media (max-width: 767px) {
   .desktop {display: none}
   .wrap {width: 90%;}
+
   @import "_r-mobile.less";
 
 }
@@ -318,6 +312,9 @@ td {
 */
 
 @media (min-width: 768px) and (max-width: 979px) {
+
+  /* 12 col */
+
   @col: 44px;
   @gap: 20px;
   body {
@@ -341,6 +338,22 @@ td {
   html {font-family: "tablet";}
   body:after {content: "tablet";}
 
+
+  /* 16 col ----------------------------
+
+  @col: 27px;
+  @gap: 20px;
+
+  .wrap {
+    width: @col * 16 + @gap * 15; //732px; //16col
+  }
+  .g-11col { width: (@col + @gap) * 11 - @gap }
+  .g-12col { width: (@col + @gap) * 12 - @gap }
+  .g-13col { width: (@col + @gap) * 13 - @gap }
+  .g-14col { width: (@col + @gap) * 14 - @gap }
+
+  ------------------------------------------ */
+
 }
 
 
@@ -361,6 +374,9 @@ td {
 */
 
 @media (min-width: 980px) {
+// If XL presents,
+// @media (min-width: 980px) and (max-width: 1299px) {
+
   @col: 60px;
   @gap: 20px;
   .wrap {
@@ -380,7 +396,88 @@ td {
 
   html {font-family: "desktop";}
   body:after {content: "desktop";}
+
+
+  /* 16 col ----------------------------
+
+  @col: 40x;
+  @gap: 20px;
+
+  .wrap {
+    width: @col * 16 + @gap * 15; //732px; //16col
+  }
+  .g-11col { width: (@col + @gap) * 11 - @gap }
+  .g-12col { width: (@col + @gap) * 12 - @gap }
+  .g-13col { width: (@col + @gap) * 13 - @gap }
+  .g-14col { width: (@col + @gap) * 14 - @gap }
+
+  ------------------------------------------ */
 }
+
+
+
+/* For 16col, add another breakpoint for XL screen. */
+// --------------------------------------------------
+
+// XL: Large Desktop
+/*
+   ####      ####    ####
+     ####  ####      ####
+       ######        ####
+      ######         ####
+    ####   ####      ##############
+  ####       ####    ##############
+*/
+
+/*
+@media (min-width: 1300px) {
+
+  @col: 54px;
+  @gap: 20px;
+
+  .wrap {
+    width: @col * 16 + @gap * 15; //1164px; //16col
+  }
+  .left-col {
+    width: @col * 12 + @gap * 11;
+    .floatL;
+  }
+  .right-col {
+    width: @col * 3 + @gap * 3.5;
+    .floatR;
+  }
+
+  .g-2col { width: (@col + @gap) * 2 - @gap }
+  .g-3col { width: (@col + @gap) * 3 - @gap }
+  .g-4col { width: (@col + @gap) * 4 - @gap }
+  .g-5col { width: (@col + @gap) * 5 - @gap }
+  .g-6col { width: (@col + @gap) * 6 - @gap }
+  .g-7col { width: (@col + @gap) * 7 - @gap }
+  .g-8col { width: (@col + @gap) * 8 - @gap }
+  .g-9col { width: (@col + @gap) * 9 - @gap }
+  .g-10col { width: (@col + @gap) * 10 - @gap }
+  .g-11col { width: (@col + @gap) * 11 - @gap }
+  .g-12col { width: (@col + @gap) * 12 - @gap }
+  .g-13col { width: (@col + @gap) * 13 - @gap }
+  .g-14col { width: (@col + @gap) * 14 - @gap }
+
+  h1 {font-size: 2.5em;} // 40/16
+  h4 {font-size: 0.75em;} // 12/14
+
+  html {
+    font-family: "desktop";
+  }
+  body:after {
+    content: "desktop";
+  }
+
+}
+
+@media (min-width: 980px) { // L and up
+  @import "r-desktop.less";
+}
+
+*/
 
 
 // --------------------------------------------------
@@ -398,6 +495,7 @@ td {
 @media (min-width: 768px) {
   .mobile {display: none}
   .g-2col,.g-3col,.g-4col,.g-5col,.g-6col,.g-7col,.g-8col,.g-9col, .g-10col {
+  //.g-2col,.g-3col,.g-4col,.g-5col,.g-6col,.g-7col,.g-8col,.g-9col, .g-10col, .g-11col, .g-12col, g-13col, .g-14col {
     margin-right: 20px;
     .floatL;
 
