@@ -9,22 +9,21 @@
   <title>
     <?php
       if ( is_front_page() ) { bloginfo('name'); echo ' - '; bloginfo('description'); }
-      elseif ( is_category() ) { bloginfo('name'); echo ' - '; single_cat_title(); }
-      elseif (is_single() ) { bloginfo('name'); echo ' - '; single_post_title(); }
-      elseif (is_page() ) { bloginfo('name'); echo ' - '; single_post_title(); }
-      else { bloginfo('name'); echo ' - '; wp_title('',true); }
+      elseif ( is_search() ) { echo 'Search Results - '; bloginfo('name'); }
+      elseif ( is_category() ) { single_cat_title(); echo ' - '; bloginfo('name'); }
+      elseif ( is_archive() ) { post_type_archive_title(); single_cat_title(); echo ' - '; bloginfo('name'); }
+      elseif ( is_single() ) { single_post_title(); echo ' - '; bloginfo('name'); }
+      elseif ( is_page() ) { single_post_title(); echo ' - '; bloginfo('name'); }
+      //elseif ( tribe_is_event() ) { echo 'Events - '; bloginfo('name'); }
+      elseif ( is_404() ) { echo 'Page Not Found - '; bloginfo('name'); }
+      else { echo 'News - '; bloginfo('name'); }
     ?>
   </title>
   <meta name="author" content="" />
   <meta name="designer" content="UPRISE - uprise.co.nz" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-<!-- ::: CSS :::::::::: -->
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/style.css" type="text/css" />
-  <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/print.css" type="text/css" media="print"/>
-  <!--[if lt IE 9]><link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/iefix.css" type="text/css" media="screen" /><![endif]-->
-
+<!-- ::: Web fonts :::::::::: -->
 
 <!-- ::: Favicons :::::::::: -->
   <link rel="shortcut icon" href="<?php bloginfo('template_url'); ?>/assets/favicon.ico" />
@@ -34,11 +33,12 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-<!-- ::: Analytics :::::::::: -->
-
-
-  <?php wp_deregister_script('jquery'); ?>
   <?php wp_head(); ?>
+
+  <script type="text/javascript">
+    window.$ = jQuery;
+  </script>
+
 </head>
 <body>
 <!--[if lt IE 7]>
@@ -65,4 +65,3 @@ wp_nav_menu( array(
 ) );
 ?>
 
-<div id="body-wrapper">
