@@ -2,7 +2,7 @@
   based on http://www.markdotto.com/bootstrap/
   v 0.1.3
 
-  Last updated: 10 APR 2014
+  Last updated: 24 JUN 2014
 
   */
 
@@ -234,6 +234,15 @@
 
   @media @highdpi {
     background-image: url("@{at2x_path}");
+    background-size: @w @h;
+  }
+}
+
+.at2x-hack(@file, @ext, @w: auto, @h: auto) {
+  background-image: url("@{file}.@{ext}");
+
+  @media @highdpi {
+    background-image: url("@{file}@2x.@{ext}");
     background-size: @w @h;
   }
 }
