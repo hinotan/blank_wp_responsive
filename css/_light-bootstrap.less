@@ -1,8 +1,8 @@
 /**
   based on http://www.markdotto.com/bootstrap/
-  v 0.1.3
+  v 0.1.4
 
-  Last updated: 24 JUN 2014
+  Last updated: 10 JUL 2014
 
   */
 
@@ -24,7 +24,8 @@
 // Center-align a block level element
 .center-block {
   display: block;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 // Sizing shortcuts
@@ -92,11 +93,18 @@
 }
 
 // Transitions
-.transition(@transition:.3s) {
+.transition(@transition:.3s cubic-bezier(0.27, 0.605, 0.365, 1)) {
   -webkit-transition: @transition;
   -moz-transition: @transition;
   transition: @transition;
 }
+.transition-delay(@time) { /* IE 10+ */
+  -webkit-transition-delay: @time;
+  transition-delay: @time;
+}
+
+
+
 
 // Add an alphatransparency value to any background or border color (via Elyse Holladay)
 #translucent {
@@ -112,7 +120,7 @@
 // Gradients
 #gradient {
   .horizontal (@startColor: #555, @endColor: #333) {
-    background-color: @endColor;
+    background-color: @startColor;
     background-repeat: repeat-x;
     background-image: -khtml-gradient(linear, left top, right top, from(@startColor), to(@endColor)); /* Konqueror */
     background-image: -moz-linear-gradient(left, @startColor, @endColor); /* FF 3.6+ */
