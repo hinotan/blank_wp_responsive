@@ -506,6 +506,9 @@ nav, menu {
     li:before {
       content: '';
     }
+    a {
+      text-decoration: none;
+    }
   }
 }
 input,button,textarea {border:none; margin: 0;}
@@ -527,10 +530,10 @@ a.tel {
   position: absolute;
 }
 
-i {
+i, address {
   font-style: normal;
 }
 
 /* apply a natural box layout model to all elements */
 * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
-
+input, textarea  { -moz-box-sizing: border-box !important; -webkit-box-sizing: border-box !important; box-sizing: border-box !important; }
