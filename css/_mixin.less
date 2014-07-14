@@ -3,6 +3,7 @@
 // Colours -----------------
 
 @ink: #444; // body text
+@greyInk: #999;
 @paper: #fff; // body bg
 @link: @orange;
 
@@ -39,6 +40,15 @@ a[target]:after {content: url("@{img}target.gif");}
     list-style: none;
     padding: 0;
   }
+}
+
+.absolute-center {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
 
 .make-button(@color:@orange) {
