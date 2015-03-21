@@ -183,7 +183,7 @@ add_action('admin_init','add_grav_forms');
 // Dashboard footer
 if (! function_exists('dashboard_footer') ){
   function dashboard_footer () {
-    echo 'Website crafted by <a href="http://uprise.co.nz" target="_blank">Uprise</a>';
+    echo 'Website crafted by <a href="http://hinotan.com" target="_blank">Ellen Zheng</a>';
   }
 }
 add_filter('admin_footer_text', 'dashboard_footer');
@@ -196,6 +196,14 @@ function modify_post_mime_types( $post_mime_types ) {
 }
 add_filter( 'post_mime_types', 'modify_post_mime_types' );
 
+
+// Enable input mask in Gravity Forms
+function add_mask($masks){
+  //$masks['NZ Bank Account'] = "99-9999-9999999-999";
+  $new_masks['NZ Bank Account'] = "99-9999-9999999-999";
+  return $new_masks;
+}
+add_filter('gform_input_masks', 'add_mask');
 
 
 // ACF post object select filter
