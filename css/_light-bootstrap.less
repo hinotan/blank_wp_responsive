@@ -1,8 +1,8 @@
 /**
   based on http://www.markdotto.com/bootstrap/
-  v 0.1.4
+  v 0.1.5
 
-  Last updated: 10 JUL 2014
+  Last updated: 21 Mar 2015
 
   */
 
@@ -43,10 +43,16 @@
 
 // Input placeholder text
 .placeholder(@color: @grayLight) {
-  :-moz-placeholder {
+  :-moz-placeholder { /* Firefox 18- */
+    color: @color;
+  }
+  ::-moz-placeholder { /* Firefox 19+ */
     color: @color;
   }
   ::-webkit-input-placeholder {
+    color: @color;
+  }
+  :-ms-input-placeholder {
     color: @color;
   }
 }
@@ -201,6 +207,13 @@
   perspective: @number;
 }
 
+
+// Clip-path
+.clip-path(@property) {
+  -webkit-clip-path: @property;
+  clip-path: @property;
+}
+
 // HEX colour to RGBA
 .bg-opacity(@color, @op: 100) {
   background-color: @color; // fallback
@@ -265,5 +278,3 @@
   filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='@path', sizingMethod='scale');
   background:none !important;
 }
-
-
