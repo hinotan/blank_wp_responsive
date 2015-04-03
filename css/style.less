@@ -3,7 +3,6 @@
 @import "_mixin.less";
 @import "_typography.less";
 
-@import "../vendor/css/onMediaQuery.css";
 
 /*
 ///////////////////////////////////////
@@ -52,6 +51,14 @@ CONTENTS
 
 //////////////// Basic ////////////////
 
+.print-only {
+  display: none;
+}
+
+body {
+  background: @paper;
+}
+
 .wrap {
   .clear;
   .clearfix;
@@ -59,8 +66,9 @@ CONTENTS
 }
 
 a {
-  .transition(color .3s ease);
+  .transition(.3s);
 }
+
 .icon { // SVG icons
   path {
     .transition(fill .3s ease);
@@ -126,10 +134,19 @@ button, .button {
 }
 
 // GRAVITY FORMS
-
+.gform_wrapper {
+  font-size: 1em;
+}
+.gform_wrapper .description, .gform_wrapper .gfield_description, .gform_wrapper .gsection_description, .gform_wrapper .instruction {
+  .sans-serif !important;
+}
+.gform_wrapper .gform_fields {
+  list-style: none;
+  padding: 0;
+}
 .gfield_required,
 .gform_wrapper li.gfield_error div.ginput_complex.ginput_container label, .gform_wrapper li.gfield_error ul.gfield_checkbox, .gform_wrapper li.gfield_error ul.gfield_radio {
-  //color: @link !important;
+  //color: @red !important;
 }
 .gform_wrapper label {
   font-weight: normal !important;
@@ -155,7 +172,7 @@ button, .button {
 }
 .gform_wrapper li.gfield_error input, .gform_wrapper li.gfield_error textarea {
   border-width: 2px !important;
-  //border-color: @link !important;
+  //border-color: @red !important;
 }
 
 .ginput_container {
@@ -167,7 +184,7 @@ button, .button {
 }
 .gform_wrapper .validation_message,
 .validation_error {
-  //color: @link !important;
+  //color: @red !important;
   font-weight: normal !important;
 }
 .gform_wrapper .gfield_label {
@@ -213,7 +230,7 @@ td {
 //////////////// 0.3 Other Elements ////////////////
 
 .sprite {
-  .at2x('../images/sprite.png', 1000px, 600px);
+  .at2x-hack('../images/sprite', 'png', 1000px, 600px);
   background-repeat: no-repeat;
 }
 
@@ -531,4 +548,3 @@ td {
 ------------------------ */
 
 //@import "../vendor/css/flexslider.css";
-
