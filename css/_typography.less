@@ -42,23 +42,22 @@ p {
   line-height: 1.7;
 }
 
-h1 {font-size: 1.875em;} // 30/16
-h2 {font-size: 1.125em;} // 18/16
-h3 {font-size: 1em;}
+h1 {font-size: 1.875em; line-height: 1;} // 30/16
+h2 {font-size: 1.125em; line-height: 1.1;} // 18/16
+h3 {font-size: 1em; line-height: 1.2;}
 h4 {font-size: 1em;}
 h1, h2, h3, h4 {
+  margin-top: 0;
   margin-bottom: 0.6em;
   color: @accent;
 }
 
-#tinymce {
-  p+h1, p+h2, p+h3, p+h4 {
+p, ul, ol, blockquote {
+  &+h2, &+h3, &+h4 {
     margin-top: 2em;
   }
-  h3, h4 {
-    color: @ink;
-  }
 }
+
 
 //////////////// Links ////////////////
 
