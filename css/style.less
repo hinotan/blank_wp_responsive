@@ -229,9 +229,13 @@ td {
 
 //////////////// 0.3 Other Elements ////////////////
 
-.sprite {
-  .at2x-hack('../images/sprite', 'png', 1000px, 600px);
+.sprite(@x, @y, @w:auto, @h:auto) {
+  //background-image: url(../images/sprite.svg);
+  .at2x-hack('../images/sprite', 'png', 150px, 150px);
   background-repeat: no-repeat;
+  display: block;
+  .size(@w, @h);
+  background-position: @x @y;
 }
 
 #scroll-to-top { //image
